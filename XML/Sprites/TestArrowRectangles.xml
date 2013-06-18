@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Generic="System.Collections.Generic">
+  <Asset Type="Generic:List[string]">
+    <Item>0 0 25 50</Item>
+    <Item>25 5 25 50</Item>
+    <Item>50 10 25 50</Item>
+    <Item>75 15 25 50</Item>
+    <Item>100 20 25 50</Item>
+    <Item>125 25 25 50</Item>
+  </Asset>
+</XnaContent>

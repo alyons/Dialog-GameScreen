@@ -1,7 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogGameScreenLibrary", "DialogGameScreenLibrary\DialogGameScreenLibrary.csproj", "{B474E80B-87C6-45F9-B704-E48761ACBE28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutsceneScreenLibrary", "DialogGameScreenLibrary\CutsceneScreenLibrary.csproj", "{B474E80B-87C6-45F9-B704-E48761ACBE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutsceneLibraryContentExtension", "CutsceneLibraryContentExtension\CutsceneLibraryContentExtension.csproj", "{A4D646FD-8D5A-417E-BA7B-BFA42C2627DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutsceneLibraryExample", "CutsceneLibraryExample\CutsceneLibraryExample\CutsceneLibraryExample.csproj", "{1D87C61D-A5F3-4A0E-BF49-2F70F15D7339}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "CutsceneLibraryExampleContent", "CutsceneLibraryExample\CutsceneLibraryExampleContent\CutsceneLibraryExampleContent.contentproj", "{195F23CD-7430-4123-97EC-2AD780471C3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutsceneCreatorApp", "CutsceneCreatorApp\CutsceneCreatorApp.csproj", "{A0A6116C-93C3-4BA0-81CA-895FA59F88A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +21,20 @@ Global
 		{B474E80B-87C6-45F9-B704-E48761ACBE28}.Debug|x86.Build.0 = Debug|x86
 		{B474E80B-87C6-45F9-B704-E48761ACBE28}.Release|x86.ActiveCfg = Release|x86
 		{B474E80B-87C6-45F9-B704-E48761ACBE28}.Release|x86.Build.0 = Release|x86
+		{A4D646FD-8D5A-417E-BA7B-BFA42C2627DB}.Debug|x86.ActiveCfg = Debug|x86
+		{A4D646FD-8D5A-417E-BA7B-BFA42C2627DB}.Debug|x86.Build.0 = Debug|x86
+		{A4D646FD-8D5A-417E-BA7B-BFA42C2627DB}.Release|x86.ActiveCfg = Release|x86
+		{A4D646FD-8D5A-417E-BA7B-BFA42C2627DB}.Release|x86.Build.0 = Release|x86
+		{1D87C61D-A5F3-4A0E-BF49-2F70F15D7339}.Debug|x86.ActiveCfg = Debug|x86
+		{1D87C61D-A5F3-4A0E-BF49-2F70F15D7339}.Debug|x86.Build.0 = Debug|x86
+		{1D87C61D-A5F3-4A0E-BF49-2F70F15D7339}.Release|x86.ActiveCfg = Release|x86
+		{1D87C61D-A5F3-4A0E-BF49-2F70F15D7339}.Release|x86.Build.0 = Release|x86
+		{195F23CD-7430-4123-97EC-2AD780471C3C}.Debug|x86.ActiveCfg = Debug|x86
+		{195F23CD-7430-4123-97EC-2AD780471C3C}.Release|x86.ActiveCfg = Release|x86
+		{A0A6116C-93C3-4BA0-81CA-895FA59F88A8}.Debug|x86.ActiveCfg = Debug|x86
+		{A0A6116C-93C3-4BA0-81CA-895FA59F88A8}.Debug|x86.Build.0 = Debug|x86
+		{A0A6116C-93C3-4BA0-81CA-895FA59F88A8}.Release|x86.ActiveCfg = Release|x86
+		{A0A6116C-93C3-4BA0-81CA-895FA59F88A8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

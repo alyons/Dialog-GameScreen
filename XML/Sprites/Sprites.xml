@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Generic="System.Collections.Generic">
+  <Asset Type="Generic:List[SpriteLibrary.Sprite]">
+    <Item>
+      <Name>Next Arrow</Name>
+      <FPS>5</FPS>
+      <TextureAsset>Images\TestArrowSprite</TextureAsset>
+      <RectangleAsset>XML\Sprites\TestArrowRectangles</RectangleAsset>
+    </Item>
+  </Asset>
+</XnaContent>

@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DialogGameScreenLibrary</RootNamespace>
+    <RootNamespace>CutsceneScreenLibrary</RootNamespace>
     <AssemblyName>DialogGameScreenLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -44,13 +44,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GameStateManagement">
-      <HintPath>.\GameStateManagement.dll</HintPath>
+      <HintPath>External Libraries\GameStateManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="mscorlib" />
+    <Reference Include="SpriteLibrary">
+      <HintPath>External Libraries\SpriteLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SpriteLibraryContentExtension">
+      <HintPath>External Libraries\SpriteLibraryContentExtension.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
@@ -62,9 +68,12 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CueContentReader.cs" />
+    <Compile Include="DialogBox.cs" />
+    <Compile Include="DialogCue.cs" />
     <Compile Include="Cue.cs" />
     <Compile Include="Cutscene.cs" />
-    <Compile Include="DialogScreen.cs" />
+    <Compile Include="CutsceneScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

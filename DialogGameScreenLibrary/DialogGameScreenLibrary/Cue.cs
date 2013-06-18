@@ -4,124 +4,37 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 
-namespace DialogGameScreenLibrary
+namespace CutsceneScreenLibrary
 {
-    public enum CueType
+    public class Cue
     {
-        BackgroundChange,
-        Talk,
-        ChangeActorPortrait,
-        Animation,
-        MusicChange,
-        SFX,
-        ChangeActor,
-        VFX
-    }
+        private string cueType;
+        private List<string> cueData;
 
-    public class Dialog
-    {
-        #region Fields
-        CueType cueAction;
-        String value1;
-        String value2;
-        #endregion
-
-        #region Properties
-        public CueType Action
+        public string CueType
         {
-            get { return cueAction; }
+            get { return cueType; }
+            set { cueType = value; }
+        }
+        public List<string> CueData
+        {
+            get { return cueData; }
+            set { cueData = value; }
         }
 
-        public String Value1
+        public Cue()
         {
-            get { return value1; }
+            cueData = new List<string>();
         }
-
-        public String Value2
+        public Cue(string c)
+            : this()
         {
-            get { return value2; }
-            set { value2 = value; }
+            CueType = c;
         }
-        #endregion
-
-        #region Initialization
-        public Dialog(CueData cd)
+        public Cue(string c, List<string> d)
+            : this(c)
         {
-            ParseAction(cd.cueType);
-            value1 = cd.value1;
-            value2 = cd.value2;
-
-            UpdateActorName();
-        }
-        #endregion
-
-        #region Helper Methods
-        private void ParseAction(string s)
-        {
-            switch (s)
-            {
-                case ("Animation"):
-                    cueAction = CueType.Animation;
-                    break;
-                case ("BackgroundChange"):
-                    cueAction = CueType.BackgroundChange;
-                    break;
-                case ("ChangeActor"):
-                    cueAction = CueType.ChangeActor;
-                    break;
-                case ("ChangeActorPortrait"):
-                    cueAction = CueType.ChangeActorPortrait;
-                    break;
-                case ("MusicChange"):
-                    cueAction = CueType.MusicChange;
-                    break;
-                case ("SFX"):
-                    cueAction = CueType.SFX;
-                    break;
-                case ("Talk"):
-                    cueAction = CueType.Talk;
-                    break;
-                case ("VFX"):
-                    cueAction = CueType.VFX;
-                    break;
-                default:
-                    cueAction = CueType.Talk;
-                    break;
-            }
-        }
-
-        private void UpdateActorName()
-        {
-            if (cueAction == CueType.Talk)
-            {
-                if (value1.Equals("Player"))
-                {
-                    value1 = GameDataManager.Player.Name;
-                }
-            }
-        }
-        #endregion
-    }
-
-    [Serializable]
-    public class CueData
-    {
-        public string cueType;
-        public string value1;
-        public string value2;
-    }
-
-    public class CueDataContentReader : ContentTypeReader<CueData>
-    {
-        protected override CueData Read(ContentReader input, CueData existingInstance)
-        {
-            CueData cd = new CueData();
-
-            cd.cueType = input.ReadString();
-            cd.value1 = input.ReadString();
-            cd.value2 = input.ReadString();
-
-            return cd;
+            cueData.AddRange(d);
         }
     }
 }

@@ -8,36 +8,35 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameStateManagement;
 
-namespace DialogGameScreenLibrary
+namespace CutsceneScreenLibrary
 {
-    public class CutsceneScreen
+    public class CutsceneScreen : GameScreen
     {
+        #region Variables
         ContentManager content;
         SpriteFont testFont;
         Cutscene scene;
         bool initializedCutscene = false;
+        #endregion
 
+        #region Properties
+        #endregion
+
+        #region Constructors
         public CutsceneScreen()
         {
         }
+        #endregion
 
-        public override void LoadContent()
+        #region Methods
+        public void LoadContent()
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
-
-            Cutscene.dialogBox = content.Load<Texture2D>("Images\\DialogBox");
-            Cutscene.nextArrow = content.Load<Texture2D>("Images\\dialogArrow");
-            Cutscene.nameFont = content.Load<SpriteFont>("Fonts\\CutsceneNameFont");
-            Cutscene.textFont = content.Load<SpriteFont>("Fonts\\CutsceneTextFont");
-
-            testFont = content.Load<SpriteFont>(@"Fonts\\testFont");
-            scene = new Cutscene(content.Load<CueData[]>("XML\\Cutscene\\" + GameDataManager.PullCutscene), content);
- 	        
         }
-
-        public override void UnloadContent()
+        public void UnloadContent()
         {
         }
 
@@ -51,7 +50,7 @@ namespace DialogGameScreenLibrary
 
         }
 
-        public override void HandleInput(InputState input)
+        public void HandleInput(InputState input)
         {
             if (input == null)
                 throw new ArgumentNullException("input");
@@ -69,37 +68,18 @@ namespace DialogGameScreenLibrary
             bool gamePadDisconnected = !gamePadState.IsConnected &&
                                        input.GamePadWasConnected[playerIndex];
 
-            if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
-            {
-                ScreenManager.AddScreen(new GameMenu(), ControllingPlayer);
-            }
-
-            if (keyboardState.IsKeyDown(Keys.M))
-            {
-                LoadingScreen.Load(ScreenManager, true, ControllingPlayer, new MapScreen());
-            }
-
-            if (input.LeftButtonPressed() || keyboardState.IsKeyDown(Keys.Space))
-            {
-                if(scene != null)
-                    if(scene.IsDone())
-                        LoadingScreen.Load(ScreenManager, true, ControllingPlayer, new MapScreen());
-
-                if (scene != null)
-                    scene.NextLine();
-            }
-
         }
 
         public override void Draw(GameTime gameTime)
         {
-            Vector2 vector = new Vector2(400,400);
+            Vector2 vector = new Vector2(400, 400);
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
-            if(scene != null)
-                scene.Draw(spriteBatch);
+            //if(scene != null)
+            //    scene.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         } 
+        #endregion
      }
 }

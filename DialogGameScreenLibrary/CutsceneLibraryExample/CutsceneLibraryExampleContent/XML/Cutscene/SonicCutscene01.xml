@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Generic="System.Collections.Generic">
+  <Asset Type="Generic:List[CutsceneScreenLibrary.Cue]">
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Eggman</Item>
+        <Item Type="System.String">Fight! Why don't you fight?!</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Emerl</Item>
+        <Item Type="System.String">... ... ...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Emerl</Item>
+        <Item Type="System.String">... ... ...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Eggman</Item>
+        <Item Type="System.String">Dang! You piece of junk!</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Eggman</Item>
+        <Item Type="System.String">Give me back the (Chaos Emerald) you took! *Grrr* What a piece of junk!</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Emerl</Item>
+        <Item Type="System.String">... ... ...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Eggman</Item>
+        <Item Type="System.String">That's it! I have already used your data to create a robot that does what I say. So, I don't need you anymore!</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Emerl</Item>
+        <Item Type="System.String">... ... ...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Narrarator</Item>
+        <Item Type="System.String">This is Emerald Town...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Narrarator</Item>
+        <Item Type="System.String">The place where Sonic and his friends live.</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Narrarator</Item>
+        <Item Type="System.String">It looks like Eggman is up to no good, with another evil scheme once again...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
+        <Item Type="System.String">Narrarator</Item>
+        <Item Type="System.String">This story begins as Sonic finds a mysterious robot at Emerald Beach...</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+  </Asset>
+</XnaContent>
