@@ -14,7 +14,7 @@ namespace CutsceneScreenLibrary
         private List<Cue> cues;
         private Dictionary<string, SpriteFont> fonts;
         private string cueAsset;
-        private DialogBox dialogBox;
+        private SimpleDialogBox dialogBox;
         #endregion
 
         #region Properties
@@ -44,7 +44,7 @@ namespace CutsceneScreenLibrary
         {
             cues = new List<Cue>();
             fonts = new Dictionary<string, SpriteFont>();
-            dialogBox = new DialogBox();
+            dialogBox = new SimpleDialogBox();
         }
         public void LoadData(ContentManager content)
         {

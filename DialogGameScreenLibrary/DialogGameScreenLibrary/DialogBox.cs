@@ -3,42 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using GameStateManagement;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 
 namespace CutsceneScreenLibrary
 {
-    public class DialogBox
+    public abstract class DialogBox
     {
-        private List<Texture2D> cornerAssets;
-        private List<Texture2D> sideAssets;
-        private Texture2D backdrop;
+        public Rectangle BoxArea;
+        public Rectangle TextArea;
+        public SpriteFont Font;
+        public List<Color> BoxColors;
+        public Color BorderColor;
+        public int BorderThickness;
+        public int BorderRadius;
 
-        public bool DrawName { get; set; }
-        public DialogCue ActiveDialog { get; set; }
-        public Dictionary<string, SpriteFont> Fonts { get; set; }
-        public Rectangle Size { get; set; }
-        public Rectangle TextArea { get; set; }
-
-        public DialogBox()
+        public virtual Texture2D CreateBackdrop(ref GraphicsDevice graphics)
         {
+            if (BoxColors == null || BoxColors.Count == 0) throw new Exception("Must define at least one box color");
+
+            Texture2D texture = new Texture2D(graphics, BoxArea.Width, BoxArea.Height, true, SurfaceFormat.Color);
+            Color[] color = new Color[texture.Width * texture.Height];
+            Color toIgnore = new Color(255, 0, 255, 0);
+
+            for (int x = 0; x < texture.Width; x++)
+            {
+                for (int y = 0; y < texture.Height; y++)
+                {
+                    switch(BoxColors.Count)
+                    {
+                        case 4:
+                            Color leftColor = Color.Lerp(BoxColors[0], BoxColors[1], (y / (texture.Height - 1)));
+                            Color rightColor = Color.Lerp(BoxColors[2], BoxColors[3], (y / (texture.Height - 1)));
+                            color[x + texture.Width * y] = Color.Lerp(leftColor, rightColor, (x / (texture.Width - 1)));
+                            break;
+                        case 2:
+                            color[x + texture.Width * y] = Color.Lerp(BoxColors[0], BoxColors[1], (x / (texture.Width - 1)));
+                            break;
+                        default:
+                            color[x + texture.Width * y] = BoxColors[0];
+                            break;
+                    }
+                }
+            }
+
+            texture.SetData<Color>(color);
+            throw new NotImplementedException();
+            //return texture;
         }
 
-        public void LoadContent(ContentManager content)
-        {
-
-        }
-
-        public void Update(GameTime gameTime)
-        {
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
-
-        string WordWrap(string text)
+        protected virtual string WordWrap(string text)
         {
             string output = "";
             string line = "";
@@ -46,24 +60,12 @@ namespace CutsceneScreenLibrary
 
             foreach (string word in words)
             {
-                if (Fonts.ContainsKey(ActiveDialog.FontName))
+                if (Font.MeasureString(line + word).Length() > TextArea.Width)
                 {
-                    if (Fonts[ActiveDialog.FontName].MeasureString(line + word).Length() > TextArea.Width)
-                    {
-                        output += line + "\n";
-                        line = "";
-                    }
-                    line += word + " ";
+                    output += line + "\n";
+                    line = "";
                 }
-                else
-                {
-                    if (Fonts.Values.First().MeasureString(line + word).Length() > TextArea.Width)
-                    {
-                        output += line + "\n";
-                        line = "";
-                    }
-                    line += word + " ";
-                }
+                line += word + " ";
             }
 
             return output + line;

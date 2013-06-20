@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="CueContentReader.cs" />
     <Compile Include="DialogBox.cs" />
+    <Compile Include="SimpleDialogBox.cs" />
     <Compile Include="DialogCue.cs" />
     <Compile Include="Cue.cs" />
     <Compile Include="Cutscene.cs" />
