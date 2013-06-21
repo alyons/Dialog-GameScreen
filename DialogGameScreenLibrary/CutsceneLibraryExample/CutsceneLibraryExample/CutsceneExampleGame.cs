@@ -24,8 +24,12 @@ namespace CutsceneLibraryExample
 
         public CutsceneExampleGame()
         {
-            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 480;
+            graphics.ApplyChanges();
 
             screenManager = new ScreenManager(this);
             Components.Add(screenManager);
@@ -36,12 +40,12 @@ namespace CutsceneLibraryExample
         private void AddInitialScreens()
         {
             //screenManager.AddScreen(new BackgroundScreen(), null);
-            screenManager.AddScreen(new CutsceneScreen(), null);
+            screenManager.AddScreen(new TestScreen(), null);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.Black);
 
             base.Draw(gameTime);
         }
