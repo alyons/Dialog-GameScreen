@@ -11,8 +11,22 @@ namespace CutsceneScreenLibrary.Words
     {
         public static Word GenerateWord(Vector2 position, SpriteFont font, string text, Dictionary<string, string> effects)
         {
-            Word someWord = new BasicWord(position, font, text);
+            Word someWord;
 
+            #region Create Base Word
+            if (effects.ContainsKey("typing"))
+            {
+                int value = 50;
+                Int32.TryParse(effects["typing"], out value);
+                someWord = new TypedWord(position, font, text, value);
+            }
+            else
+            {
+                someWord = new BasicWord(position, font, text);
+            }
+            #endregion
+
+            #region Decorate Word
             if (effects.ContainsKey("color"))
             {
                 var colorProp = typeof(Color).GetProperty(effects["color"]);
@@ -37,13 +51,7 @@ namespace CutsceneScreenLibrary.Words
                 }
             }
 
-            if (effects.ContainsKey("typing"))
-            {
-                int value = 50;
-                Int32.TryParse(effects["typing"], out value);
-                someWord = new TypedWord(someWord, value);
-            }
-
+            
             if (effects.ContainsKey("shadow"))
             {
                 string[] values = effects["shadow"].Split(',');
@@ -61,6 +69,7 @@ namespace CutsceneScreenLibrary.Words
                     someWord = new ShadowedWord(someWord, shadowColor, shadowOffset);
                 }
             }
+            #endregion
 
             return someWord;
         }

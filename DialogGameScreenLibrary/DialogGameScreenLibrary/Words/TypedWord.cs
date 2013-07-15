@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CutsceneScreenLibrary.Words
 {
-    public class TypedWord : WordDecorator
+    public class TypedWord : Word
     {
         private int charDisplayed;
         private int delay = 0;
@@ -20,8 +21,8 @@ namespace CutsceneScreenLibrary.Words
             }
         }
 
-        public TypedWord(Word word, int typingDelay)
-            : base(word)
+        public TypedWord(Vector2 pos, SpriteFont font, string text, int typingDelay)
+            : base(pos, font, text)
         {
             delay = typingDelay;
             timeLeft = delay;
@@ -30,7 +31,7 @@ namespace CutsceneScreenLibrary.Words
 
         public override void Update(GameTime gameTime)
         {
-            if (charDisplayed < text.Length)
+            if (charDisplayed < Text.Length)
             {
                 timeLeft -= gameTime.ElapsedGameTime.Milliseconds;
 

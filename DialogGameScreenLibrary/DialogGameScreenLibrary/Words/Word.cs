@@ -56,6 +56,15 @@ namespace CutsceneScreenLibrary.Words
         }
         #endregion
 
+        #region Constructors
+        protected Word(Vector2 pos, SpriteFont font, string text)
+        {
+            Position = pos;
+            Font = font;
+            Text = text;
+        }
+        #endregion
+
         #region Methods
         public virtual void Update(GameTime gameTime)
         {

@@ -16,45 +16,54 @@ namespace CutsceneScreenLibrary.Words
         #region Properties
         public override Vector2 Position
         {
-            get { return baseWord.Position; }
-            set { baseWord.Position = value; }
+            get { return base.Position; }
+            set { base.Position = value; }
         }
         public override SpriteFont Font
         {
-            get { return baseWord.Font; }
-            set { baseWord.Font = value; }
+            get { return base.Font; }
+            set { base.Font = value; }
         }
         public override string Text
         {
-            get { return baseWord.Text; }
-            set { baseWord.Text = value; }
+            get { return base.Text; }
+            set { base.Text = value; }
         }
         public override Vector2 Size
         {
-            get { return baseWord.Size; }
+            get { return base.Size; }
         }
         public override string DrawableText
         {
-            get { return baseWord.DrawableText; }
+            get { return base.DrawableText; }
         }
         public override float Right
         {
-            get { return baseWord.Right; }
+            get { return base.Right; }
         }
         public override float Bottom
         {
-            get { return baseWord.Bottom; }
+            get { return base.Bottom; }
         }
         #endregion
 
         #region Contructors
         public WordDecorator(Word word)
+            : base(word.Position, word.Font, word.Text)
         {
             baseWord = word;
         }
         #endregion
 
         #region Methods
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+        }
         #endregion
     }
 }
