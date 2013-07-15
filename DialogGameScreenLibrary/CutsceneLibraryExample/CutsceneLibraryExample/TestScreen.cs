@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using CutsceneScreenLibrary;
 using GameStateManagement;
 using Microsoft.Xna.Framework;
-using CutsceneScreenLibrary;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace CutsceneLibraryExample
 {
@@ -15,6 +16,11 @@ namespace CutsceneLibraryExample
     {
         #region Variables
         DialogBox dialogBox;
+        ContentManager content;
+        InputAction proceedActions;
+        InputAction resetActions;
+        int cueCount;
+        List<Cue> cues;
         #endregion
 
         #region Properties
@@ -23,39 +29,72 @@ namespace CutsceneLibraryExample
         #region Initialization
         public TestScreen()
         {
-            dialogBox = new DialogBox()
-            {
-                BoxArea = new Rectangle(0, 320, 600, 160),
-                BoxColors = new List<Color>() { new Color(0, 0, 240), new Color(0, 0, 100), new Color(0, 0, 180), new Color(0, 0, 40) },
-                BorderThickness = 7,
-                BorderRadius = 5,
-                //BorderColors = new List<Color> { new Color(155, 155, 155), new Color(250, 250, 250), new Color(155, 155, 155) }
-                BorderColors = new List<Color> { new Color(250, 250, 250) }
-            };
+            dialogBox = new DialogBox();
+
+            proceedActions = new InputAction(new Buttons[] { Buttons.A }, new Keys[] { Keys.Space }, true);
+            resetActions = new InputAction(new Buttons[] { Buttons.Back, Buttons.B }, new Keys[] { Keys.Home }, true);
+            cueCount = -1;
         }
-
-        public void LoadContent(ContentManager content)
+        public override void Activate(bool instancePreserved)
         {
+            if (content == null) content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            cues = content.Load<List<Cue>>(@"XML\Cutscene\SonicCutscene01");
+
+            foreach (DialogCue dc in cues.FindAll(c => c is DialogCue))
+            {
+                //First test font string
+                if (!dialogBox.Fonts.ContainsKey(dc.FontName))
+                {
+                    dialogBox.Fonts.Add(dc.FontName, content.Load<SpriteFont>(dc.FontName));
+                }
+
+                //Then look for font amendments in lines
+                if (dc.Line.Contains("[font="))
+                {
+                    int startPos = dc.Line.IndexOf("[font=");
+                    int endPos = dc.Line.IndexOf("]", startPos);
+                    string substring = dc.Line.Substring(startPos, endPos - startPos + 1);
+                    substring = substring.Remove(0, 6);
+                    substring = substring.Remove(substring.Count() - 1);
+                    if (!dialogBox.Fonts.ContainsKey(substring))
+                    {
+                        dialogBox.Fonts.Add(substring, content.Load<SpriteFont>(substring));
+                    }
+                }
+            }
         }
         #endregion
 
         #region Methods
+        public override void HandleInput(GameTime gameTime, InputState input)
+        {
+            if (input == null)
+                throw new ArgumentNullException("input");
+
+            // Look up inputs for the active player profile.
+            int playerIndex = /*(int)ControllingPlayer.Value;*/1;
+
+            KeyboardState keyboardState = input.CurrentKeyboardStates[playerIndex];
+            GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
+
+            PlayerIndex player;
+
+            if (proceedActions.Evaluate(input, ControllingPlayer, out player))
+            {
+                Proceed();
+            }
+        }
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
-            if (dialogBox.texture == null)
+            if (!dialogBox.HasTextures)
             {
-                try
-                {
-                    dialogBox.texture = dialogBox.CreateBackdrop(ScreenManager.GraphicsDevice);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.ToString());
-                }
+                dialogBox.CreateTextures(ScreenManager.GraphicsDevice);
             }
+
+            dialogBox.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
@@ -67,6 +106,16 @@ namespace CutsceneLibraryExample
             spriteBatch.Begin();
             dialogBox.Draw(spriteBatch);
             spriteBatch.End();
+        }
+
+        void Proceed()
+        {
+            if (dialogBox.EndOfCue)
+            {
+                cueCount++;
+                if (cueCount > cues.Count - 1) cueCount = 0;
+                dialogBox.ActiveCue = (cues[cueCount] as DialogCue);
+            }
         }
         #endregion
     }

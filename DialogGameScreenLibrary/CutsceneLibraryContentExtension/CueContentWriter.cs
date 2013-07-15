@@ -22,7 +22,7 @@ namespace CutsceneLibraryContentExtension
 
         public override string GetRuntimeReader(TargetPlatform targetPlatform)
         {
-            return typeof(CueContentWriter).AssemblyQualifiedName;
+            return typeof(CueContentReader).AssemblyQualifiedName;
         }
     }
 }

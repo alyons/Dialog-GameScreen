@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CutsceneScreenLibrary
 {
@@ -23,7 +21,7 @@ namespace CutsceneScreenLibrary
         public string Line
         {
             get { return line; }
-            protected set { line = value; }
+            set { line = value; }
         }
         public string FontName
         {
@@ -47,19 +45,19 @@ namespace CutsceneScreenLibrary
                 Name = "default";
 
             if (CueData.Count > 1)
-                Name = Convert.ToString(CueData[1]);
+                Line = Convert.ToString(CueData[1]);
             else
-                Name = "default";
+                Line = "default";
 
             if (CueData.Count > 2)
-                Name = Convert.ToString(CueData[2]);
+                FontName = Convert.ToString(CueData[2]);
             else
-                Name = "default";
+                FontName = "default";
 
             if (CueData.Count > 3)
-                Name = Convert.ToString(CueData[3]);
+                TextEffectName = Convert.ToString(CueData[3]);
             else
-                Name = "default";
+                TextEffectName = "default";
         }
         public DialogCue(Cue cue)
             : this (cue.CueType, cue.CueData)

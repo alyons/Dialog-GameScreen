@@ -4,6 +4,15 @@
     <Item>
       <CueType>DialogCue</CueType>
       <CueData>
+        <Item Type="System.String">Narrarator</Item>
+        <Item Type="System.String">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium neque sit amet nibh feugiat, et ultricies lorem mollis. Curabitur eget risus vitae metus adipiscing pretium. Nullam vitae neque sed arcu commodo fermentum sed eget odio. Duis dolor nibh, blandit quis vehicula nec, adipiscing sit amet eros. Pellentesque vulputate massa vel purus sollicitudin malesuada. Mauris interdum molestie magna nec scelerisque. Aliquam lobortis volutpat massa, ac dapibus mi porttitor eu. Donec et justo dolor. Pellentesque in convallis erat. Suspendisse consectetur viverra consectetur. Nunc id tellus et nisi varius pharetra. Aenean pulvinar fermentum eros et molestie. In suscipit, velit congue condimentum accumsan, urna est tincidunt est, aliquet pretium ligula nisi et quam.</Item>
+        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">default</Item>
+      </CueData>
+    </Item>
+    <Item>
+      <CueType>DialogCue</CueType>
+      <CueData>
         <Item Type="System.String">Eggman</Item>
         <Item Type="System.String">Fight! Why don't you fight?!</Item>
         <Item Type="System.String">Fonts\DefaultFont</Item>
@@ -41,7 +50,7 @@
       <CueType>DialogCue</CueType>
       <CueData>
         <Item Type="System.String">Eggman</Item>
-        <Item Type="System.String">Give me back the (Chaos Emerald) you took! *Grrr* What a piece of junk!</Item>
+        <Item Type="System.String">Give me back the [color=Blue]Chaos Emerald[/color] you took! *Grrr* What a piece of junk!</Item>
         <Item Type="System.String">Fonts\DefaultFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
@@ -59,7 +68,7 @@
       <CueType>DialogCue</CueType>
       <CueData>
         <Item Type="System.String">Eggman</Item>
-        <Item Type="System.String">That's it! I have already used your data to create a robot that does what I say. So, I don't need you anymore!</Item>
+        <Item Type="System.String">That's it! I have already used your data to create a robot that does what I say. So, I don't need you [color=Red]any[/color][color=Blue]more[/color]!</Item>
         <Item Type="System.String">Fonts\DefaultFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
@@ -77,8 +86,8 @@
       <CueType>DialogCue</CueType>
       <CueData>
         <Item Type="System.String">Narrarator</Item>
-        <Item Type="System.String">This is Emerald Town...</Item>
-        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">This is [font=Fonts\ThirdFont][color=Green]Emerald Town[/color][/font]...</Item>
+        <Item Type="System.String">Fonts\SecondFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
     </Item>
@@ -87,7 +96,7 @@
       <CueData>
         <Item Type="System.String">Narrarator</Item>
         <Item Type="System.String">The place where Sonic and his friends live.</Item>
-        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">Fonts\SecondFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
     </Item>
@@ -96,7 +105,7 @@
       <CueData>
         <Item Type="System.String">Narrarator</Item>
         <Item Type="System.String">It looks like Eggman is up to no good, with another evil scheme once again...</Item>
-        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">Fonts\SecondFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
     </Item>
@@ -104,8 +113,8 @@
       <CueType>DialogCue</CueType>
       <CueData>
         <Item Type="System.String">Narrarator</Item>
-        <Item Type="System.String">This story begins as Sonic finds a mysterious robot at Emerald Beach...</Item>
-        <Item Type="System.String">Fonts\DefaultFont</Item>
+        <Item Type="System.String">This story begins as Sonic finds a mysterious robot at [font=Fonts\ThirdFont][color=0,255,0,255]Emerald Beach[/color][/font]...</Item>
+        <Item Type="System.String">Fonts\SecondFont</Item>
         <Item Type="System.String">default</Item>
       </CueData>
     </Item>
