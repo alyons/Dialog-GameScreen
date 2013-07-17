@@ -83,7 +83,6 @@
     <Compile Include="TextBlock.cs" />
     <Compile Include="Words\ColoredWord.cs" />
     <Compile Include="Words\ShadowedWord.cs" />
-    <Compile Include="Words\TypedWord.cs" />
     <Compile Include="Words\BasicWord.cs" />
     <Compile Include="Words\Word.cs" />
     <Compile Include="Words\WordDecorator.cs" />

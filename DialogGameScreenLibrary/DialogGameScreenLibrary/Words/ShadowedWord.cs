@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CutsceneScreenLibrary.Words
 {
-    public class ShadowedWord : WordDecorator
+    public class ShadowedCharacter : CharacterDecorator
     {
         private Color shadowColor;
         private Vector2 shadowOffset;
@@ -22,7 +22,7 @@ namespace CutsceneScreenLibrary.Words
             }
         }
 
-        public ShadowedWord(Word word, Color color, Vector2 offset)
+        public ShadowedCharacter(Character word, Color color, Vector2 offset)
             : base(word)
         {
             shadowColor = color;
@@ -31,7 +31,7 @@ namespace CutsceneScreenLibrary.Words
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(Font, DrawableText, Position + shadowOffset, shadowColor);
+            spriteBatch.DrawString(Font, Text, Position + shadowOffset, shadowColor);
             baseWord.Draw(spriteBatch);
         }
     }

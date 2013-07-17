@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CutsceneScreenLibrary.Words
 {
-    public abstract class WordDecorator : Word
+    public abstract class CharacterDecorator : Character
     {
         #region Variables
-        protected Word baseWord;
+        protected Character baseWord;
         #endregion
 
         #region Properties
@@ -33,10 +33,6 @@ namespace CutsceneScreenLibrary.Words
         {
             get { return base.Size; }
         }
-        public override string DrawableText
-        {
-            get { return base.DrawableText; }
-        }
         public override float Right
         {
             get { return base.Right; }
@@ -48,7 +44,7 @@ namespace CutsceneScreenLibrary.Words
         #endregion
 
         #region Contructors
-        public WordDecorator(Word word)
+        public CharacterDecorator(Character word)
             : base(word.Position, word.Font, word.Text)
         {
             baseWord = word;

@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CutsceneScreenLibrary.Words
 {
-    public class ColoredWord : WordDecorator
+    public class ColoredCharacter : CharacterDecorator
     {
         public Color color;
 
-        public ColoredWord(Word word, Color c)
+        public ColoredCharacter(Character word, Color c)
             :base(word)
         {
             color = c;
@@ -19,7 +19,7 @@ namespace CutsceneScreenLibrary.Words
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(Font, DrawableText, Position, color);
+            spriteBatch.DrawString(Font, Text, Position, color);
         }
     }
 }

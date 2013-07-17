@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CutsceneScreenLibrary.Words
 {
-    public abstract class Word
+    public abstract class Character
     {
         #region Variables
         protected string text;
@@ -35,10 +35,6 @@ namespace CutsceneScreenLibrary.Words
         {
             get { return font.MeasureString(text); }
         }
-        public virtual string DrawableText
-        {
-            get { return text; }
-        }
         public virtual float Right
         { 
             get { return position.X + Size.X; } 
@@ -57,7 +53,7 @@ namespace CutsceneScreenLibrary.Words
         #endregion
 
         #region Constructors
-        protected Word(Vector2 pos, SpriteFont font, string text)
+        protected Character(Vector2 pos, SpriteFont font, string text)
         {
             Position = pos;
             Font = font;
@@ -72,7 +68,7 @@ namespace CutsceneScreenLibrary.Words
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(Font, DrawableText, Position, Color.White);
+            spriteBatch.DrawString(Font, Text, Position, Color.White);
         }
         #endregion
     }

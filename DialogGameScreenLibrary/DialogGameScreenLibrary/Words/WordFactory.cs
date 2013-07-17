@@ -9,21 +9,12 @@ namespace CutsceneScreenLibrary.Words
 {
     public static class WordFactory
     {
-        public static Word GenerateWord(Vector2 position, SpriteFont font, string text, Dictionary<string, string> effects)
+        public static Character GenerateWord(Vector2 position, SpriteFont font, string text, Dictionary<string, string> effects)
         {
-            Word someWord;
+            Character someWord;
 
             #region Create Base Word
-            if (effects.ContainsKey("typing"))
-            {
-                int value = 50;
-                Int32.TryParse(effects["typing"], out value);
-                someWord = new TypedWord(position, font, text, value);
-            }
-            else
-            {
-                someWord = new BasicWord(position, font, text);
-            }
+            someWord = new BasicWord(position, font, text);
             #endregion
 
             #region Decorate Word
@@ -32,7 +23,7 @@ namespace CutsceneScreenLibrary.Words
                 var colorProp = typeof(Color).GetProperty(effects["color"]);
                 if (colorProp != null)
                 {
-                    someWord = new ColoredWord(someWord, (Color)colorProp.GetValue(null, null));
+                    someWord = new ColoredCharacter(someWord, (Color)colorProp.GetValue(null, null));
                 }
                 else
                 {
@@ -46,7 +37,7 @@ namespace CutsceneScreenLibrary.Words
                                 rgba = new int[] { 255, 255, 255, 255 };
                                 break;
                             }
-                        someWord = new ColoredWord(someWord, new Color(rgba[0], rgba[1], rgba[2], rgba[3]));
+                        someWord = new ColoredCharacter(someWord, new Color(rgba[0], rgba[1], rgba[2], rgba[3]));
                     }
                 }
             }
@@ -66,7 +57,7 @@ namespace CutsceneScreenLibrary.Words
                     Int32.TryParse(values[2], out x);
                     Int32.TryParse(values[3], out y);
                     Vector2 shadowOffset = new Vector2(x, y);
-                    someWord = new ShadowedWord(someWord, shadowColor, shadowOffset);
+                    someWord = new ShadowedCharacter(someWord, shadowColor, shadowOffset);
                 }
             }
             #endregion

@@ -14,7 +14,7 @@ namespace CutsceneScreenLibrary
     {
         #region Variables
         private Vector2 position;
-        private List<Word> words;
+        private List<Character> words;
         private int lineSpacing;
         private Rectangle textArea;
         private Dictionary<string, SpriteFont> fonts;
@@ -49,7 +49,7 @@ namespace CutsceneScreenLibrary
         #region Initialization
         private TextBlock()
         {
-            words = new List<Word>();
+            words = new List<Character>();
             TextEffects = new Dictionary<string, string>();
         }
         public TextBlock(Rectangle textArea, Dictionary<string, SpriteFont> fonts)
@@ -63,12 +63,12 @@ namespace CutsceneScreenLibrary
         #region Methods
         public void Update(GameTime gameTime)
         {
-            foreach (Word word in words)
+            foreach (Character word in words)
                 word.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Word word in words.FindAll(w => WordIsVisible(w)))
+            foreach (Character word in words.FindAll(w => WordIsVisible(w)))
             {
                 word.Draw(spriteBatch);
             }
@@ -106,7 +106,7 @@ namespace CutsceneScreenLibrary
                 }
                 else
                 {
-                    Word toAdd;
+                    Character toAdd;
                     if (appliedEffects.ContainsKey("font"))
                     {
                         toAdd = WordFactory.GenerateWord(nextPos, Fonts[appliedEffects["font"]], word, appliedEffects);
@@ -126,7 +126,7 @@ namespace CutsceneScreenLibrary
                 }
             }
         }
-        List<string> SplitString(string text)
+        List<string> SplitString_Old(string text)
         {
             List<string> output = new List<string>();
 
@@ -152,7 +152,41 @@ namespace CutsceneScreenLibrary
 
             return output;
         }
-        bool WordIsVisible(Word word)
+        List<string> SplitString(string text)
+        {
+            List<string> output = new List<string>();
+            bool inTag = false;
+            string tag = "";
+
+            foreach (char c in text)
+            {
+                if (inTag)
+                {
+                    tag += c;
+                    if (c == ']')
+                    {
+                        output.Add(tag);
+                        inTag = false;
+                        tag = "";
+                    }
+                }
+                else
+                {
+                    if (c == '[')
+                    {
+                        tag += c;
+                        inTag = true;
+                    }
+                    else
+                    {
+                        output.Add("" + c);
+                    }
+                }
+            }
+
+            return output;
+        }
+        bool WordIsVisible(Character word)
         {
             return TextArea.Contains(word.Area);
         }
