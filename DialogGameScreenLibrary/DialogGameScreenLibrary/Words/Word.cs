@@ -55,9 +55,9 @@ namespace CutsceneScreenLibrary.Words
         #region Constructors
         protected Character(Vector2 pos, SpriteFont font, string text)
         {
-            Position = pos;
-            Font = font;
-            Text = text;
+            position = pos;
+            this.font = font;
+            this.text = text;
         }
         #endregion
 

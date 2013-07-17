@@ -113,7 +113,7 @@ namespace CutsceneScreenLibrary
             position = new Vector2(0, 320);
             textBlock = new TextBlock(TextArea, Fonts);
             textBlock.TextEffects.Add("shadow", "Black,128,2,2");
-            textBlock.TextEffects.Add("typing", "250");
+            //textBlock.TextEffects.Add("typing", "250");
         }
         #endregion
 

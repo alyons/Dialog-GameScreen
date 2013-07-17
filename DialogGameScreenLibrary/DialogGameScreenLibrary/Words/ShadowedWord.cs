@@ -32,7 +32,7 @@ namespace CutsceneScreenLibrary.Words
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(Font, Text, Position + shadowOffset, shadowColor);
-            baseWord.Draw(spriteBatch);
+            base.Draw(spriteBatch);
         }
     }
 }

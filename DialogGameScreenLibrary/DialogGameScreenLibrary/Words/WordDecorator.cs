@@ -16,30 +16,30 @@ namespace CutsceneScreenLibrary.Words
         #region Properties
         public override Vector2 Position
         {
-            get { return base.Position; }
-            set { base.Position = value; }
+            get { return baseWord.Position; }
+            set { baseWord.Position = value; }
         }
         public override SpriteFont Font
         {
-            get { return base.Font; }
-            set { base.Font = value; }
+            get { return baseWord.Font; }
+            set { baseWord.Font = value; }
         }
         public override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get { return baseWord.Text; }
+            set { baseWord.Text = value; }
         }
         public override Vector2 Size
         {
-            get { return base.Size; }
+            get { return baseWord.Size; }
         }
         public override float Right
         {
-            get { return base.Right; }
+            get { return baseWord.Right; }
         }
         public override float Bottom
         {
-            get { return base.Bottom; }
+            get { return baseWord.Bottom; }
         }
         #endregion
 
@@ -54,11 +54,11 @@ namespace CutsceneScreenLibrary.Words
         #region Methods
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            baseWord.Update(gameTime);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            baseWord.Draw(spriteBatch);
         }
         #endregion
     }
