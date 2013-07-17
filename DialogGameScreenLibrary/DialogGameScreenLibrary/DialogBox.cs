@@ -104,7 +104,8 @@ namespace CutsceneScreenLibrary
             borderShadow = 2;
             initialShadowIntensity = 0.25f;
             finalShadowIntensity = 0.25f;
-            backgroundColors = new List<Color>() { new Color(0, 0, 240), new Color(0, 0, 100), new Color(0, 0, 180), new Color(0, 0, 40) };
+            //backgroundColors = new List<Color>() { new Color(0, 0, 240), new Color(0, 0, 100), new Color(0, 0, 180), new Color(0, 0, 40) };
+            backgroundColors = new List<Color>() { new Color(200, 200, 200), new Color(60, 60, 60), new Color(140, 140, 140), new Color(0, 0, 0) };
             borderColors = new List<Color> { new Color(105, 105, 105), new Color(250, 250, 250), new Color(105, 105, 105) };
             typingDelay = 2500;
             currentDelay = typingDelay;
@@ -113,6 +114,7 @@ namespace CutsceneScreenLibrary
             position = new Vector2(0, 320);
             textBlock = new TextBlock(TextArea, Fonts);
             textBlock.TextEffects.Add("shadow", "Black,128,2,2");
+            //textBlock.TextEffects.Add("color", "Black");
             //textBlock.TextEffects.Add("typing", "250");
         }
         #endregion
@@ -140,7 +142,7 @@ namespace CutsceneScreenLibrary
         }
         public void SetNextText(DialogCue dialogCue)
         {
-            textBlock.CreateWordsFromDialogCue(dialogCue);
+            textBlock.CreateCharactersFromDialogCue(dialogCue);
         }
         #endregion
     }
