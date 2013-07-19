@@ -41,7 +41,7 @@ namespace CutsceneScreenLibrary
         public bool HasTextures { get { return texture != null; } }
         public bool EndOfCue
         {
-            get { return true; }
+            get { return textBlock.EndOfLine; }
         }
         public Rectangle BoxArea;
         public Rectangle TextArea

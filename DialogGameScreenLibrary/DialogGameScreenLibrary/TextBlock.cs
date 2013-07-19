@@ -38,6 +38,10 @@ namespace CutsceneScreenLibrary
             get { return textEffects; }
             set { textEffects = value; }
         }
+        public bool EndOfLine
+        {
+            get { return !(words.Exists(c => c.Position.Y > TextArea.Y && !WordIsVisible(c))); }
+        }
         #endregion
 
         #region Events
@@ -253,6 +257,18 @@ namespace CutsceneScreenLibrary
         bool WordIsVisible(Character word)
         {
             return TextArea.Contains(word.Area);
+        }
+        private void NextLine()
+        {
+            if (!EndOfLine)
+            {
+                float moveHeight = words.Find(c => c.Position.Y > TextArea.Y).Position.Y - TextArea.Y;
+
+                foreach (Character c in words)
+                {
+                    c.Position = new Vector2(c.Position.X, c.Position.Y - moveHeight);
+                }
+            }
         }
         #endregion
     }
