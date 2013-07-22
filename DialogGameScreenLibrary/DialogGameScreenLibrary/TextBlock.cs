@@ -191,14 +191,12 @@ namespace CutsceneScreenLibrary
 
                     if (wordToAdd.Last().Text.Equals(" ") || i == lastCharacter)
                     {
-                        //Test for word wrapping and all of that shit (oh could add logic to handle really long words as well, i.e. hyphenation)!
                         float wordLength = 0;
                         foreach (Character c in wordToAdd) if (!c.Text.Equals(" ")) wordLength += c.Size.X;
 
                         if (nextPos.X + wordLength > TextArea.Right)
                         {
-                            //This is where hyphenation would be extremely useful
-                            nextPos = new Vector2(TextArea.X, words.Last().Bottom);
+                            nextPos = new Vector2(TextArea.X, LineHeight(words.Last().Position.Y));
                             foreach (Character c in wordToAdd)
                             {
                                 c.Position = nextPos;
@@ -258,7 +256,7 @@ namespace CutsceneScreenLibrary
         {
             return TextArea.Contains(word.Area);
         }
-        private void NextLine()
+        public void NextLine()
         {
             if (!EndOfLine)
             {
@@ -269,6 +267,14 @@ namespace CutsceneScreenLibrary
                     c.Position = new Vector2(c.Position.X, c.Position.Y - moveHeight);
                 }
             }
+        }
+        float LineHeight(float lineY)
+        {
+            float height = words.Find(c => c.Position.Y == lineY).Bottom;
+
+            foreach (Character c in words.FindAll(c => c.Position.Y == lineY)) height = Math.Max(height, c.Bottom);
+
+            return height;
         }
         #endregion
     }

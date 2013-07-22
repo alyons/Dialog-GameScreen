@@ -116,6 +116,10 @@ namespace CutsceneLibraryExample
                 if (cueCount > cues.Count - 1) cueCount = 0;
                 dialogBox.ActiveCue = (cues[cueCount] as DialogCue);
             }
+            else
+            {
+                dialogBox.NextLine();
+            }
         }
         #endregion
     }
